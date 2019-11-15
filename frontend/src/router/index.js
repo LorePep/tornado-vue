@@ -1,17 +1,16 @@
 import Vue from 'vue'
-import Router from 'vue-router'
-const routerOptions = [
-  { path: '/', component: 'Home' },
-  { path: '/about', component: 'About' }
-]
-const routes = routerOptions.map(route => {
-  return {
-    ...route,
-    component: () => import(`@/components/${route.component}.vue`)
-  }
-})
-Vue.use(Router)
-export default new Router({
-  routes,
+import VueRouter from 'vue-router'
+import Analysis from '@/components/Analysis'
+
+Vue.use(VueRouter)
+
+export default new VueRouter({
+  routes: [
+      {
+        path: '/',
+        name: 'Analysis',
+        component: Analysis
+      }  
+  ],
   mode: 'history'
 })

@@ -1,5 +1,4 @@
 <template>
-    <v-layout row wrap align-center>
     <v-flex xs8  offset-md2>
         <v-select
             v-model="e1"
@@ -11,7 +10,6 @@
             single-line
         ></v-select>
      </v-flex>
-</v-layout>
 </template>
 
 <script>

@@ -1,29 +1,31 @@
 <template>
-  <v-app>
-    <v-toolbar fixed app dark clipped-left color="primary" class="elevation-2">
-          <v-toolbar-title>My Analysis Site</v-toolbar-title>
-    </v-toolbar>
-
-    <v-navigation-drawer  class="drawer-style" id="style-1">
-      <v-divider></v-divider>
-
-      <v-list dense>
-        <v-list-item
-          v-for="item in items"
-          :key="item.title"
-        >
-          <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
+  <v-app id="app">
+     <v-navigation-drawer app fixed permanent clipped>
+      <v-toolbar></v-toolbar>
+      <v-toolbar flat>
+        <v-list>
+          <v-list-tile>
+            <v-list-tile-title class="title">Filter</v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-toolbar>
     </v-navigation-drawer>
-      
-  <v-container fluid>
-    <router-view></router-view>
-  </v-container>
+
+    <v-app-bar app class="elevation-1" clipped-left dark>
+      <span>My Analysis App</span>
+    </v-app-bar>
+
+    <v-content>
+      <v-container fluid bg grid-list-md text-xs-center>
+        <v-layout row wrap align-cente justify-center align-center>
+          <v-flex>
+            <router-view></router-view>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-content>
   
-  <v-footer padless>
+  <v-footer app dark>
     <v-col
       class="text-center"
       cols="12"
@@ -33,8 +35,8 @@
   </v-footer>
   </v-app>
 </template>
-<script>
 
+<script>
 export default {
   name: 'App',
 

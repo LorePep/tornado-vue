@@ -16,7 +16,7 @@ class GetFileList(tornado.web.RequestHandler):
         self.set_header('Access-Control-Allow-Methods', 'GET')
 
     def get(self):
-        response = dict(fileList=[f for f in os.listdir(DATA_FOLDER) if f.endswith(".txt")])
+        response = dict(fileList=sorted([f for f in os.listdir(DATA_FOLDER) if f.endswith(".txt")]))
         self.write(json.dumps(response))
 
 

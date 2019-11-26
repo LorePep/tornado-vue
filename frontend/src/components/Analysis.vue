@@ -1,8 +1,7 @@
 <template>
     <v-flex xs8  offset-md2>
         <v-select
-            v-model="e1"
-            :items="states"
+            :items="files"
             menu-props="auto"
             label="Select"
             hide-details
@@ -13,39 +12,23 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        e1: 'Florida',
-        e2: 'Texas',
-        e3: null,
-        e4: null,
-        items: [
-          { text: 'State 1' },
-          { text: 'State 2' },
-          { text: 'State 3' },
-          { text: 'State 4' },
-          { text: 'State 5' },
-          { text: 'State 6' },
-          { text: 'State 7' },
-        ],
-        states: [
-          'Alabama', 'Alaska', 'American Samoa', 'Arizona',
-          'Arkansas', 'California', 'Colorado', 'Connecticut',
-          'Delaware', 'District of Columbia', 'Federated States of Micronesia',
-          'Florida', 'Georgia', 'Guam', 'Hawaii', 'Idaho',
-          'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky',
-          'Louisiana', 'Maine', 'Marshall Islands', 'Maryland',
-          'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi',
-          'Missouri', 'Montana', 'Nebraska', 'Nevada',
-          'New Hampshire', 'New Jersey', 'New Mexico', 'New York',
-          'North Carolina', 'North Dakota', 'Northern Mariana Islands', 'Ohio',
-          'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico',
-          'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee',
-          'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia',
-          'Washington', 'West Virginia', 'Wisconsin', 'Wyoming',
-        ],
-      }
-    },
-  }
+import axios from 'axios'
+
+export default {
+  data () {
+    return {
+      files: [],
+    }
+  },
+  mounted () {
+    return axios.get('http://localhost:5000/v1/listfiles')
+      .then(response => {
+        this.files = response.data.fileList
+      })
+      .catch(error => {
+        /*eslint no-console: ["error", { allow: ["error"] }] */
+        console.error(error)
+      })
+  },
+}
 </script>

@@ -3,11 +3,21 @@
      <v-navigation-drawer app fixed permanent clipped>
       <v-toolbar></v-toolbar>
       <v-toolbar flat>
-        <v-list>
-          <v-list-tile>
-            <v-list-tile-title class="title">Filter</v-list-tile-title>
-          </v-list-tile>
-        </v-list>
+        <v-list
+        dense
+        nav
+      >
+        <v-list-item
+          v-for="item in items"
+          :key="item.title"
+          link
+          :to="item.href"
+        >
+          <v-list-item-content>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
       </v-toolbar>
     </v-navigation-drawer>
 
@@ -45,8 +55,8 @@ export default {
 
   data: () => ({
     items: [
-          { title: 'Analysis'},
-          { title: 'Second Page'},
+      { title: 'Analysis', href: '/'},
+      { title: 'Report', href: '/v1/report'},
         ],
   }),
 };

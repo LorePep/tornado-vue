@@ -11,7 +11,7 @@
           v-for="item in items"
           :key="item.title"
           link
-          :to="item.href"
+          :to="{name: item.title}"
         >
           <v-list-item-content>
             <v-list-item-title>{{ item.title }}</v-list-item-title>

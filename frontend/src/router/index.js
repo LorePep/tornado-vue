@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Analysis from '@/components/Analysis'
-import Report from '@/components/Analysis'
+import Report from '@/components/Report'
 
 Vue.use(VueRouter)
 
